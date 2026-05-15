@@ -5,7 +5,7 @@
     <LangVersion>12.0</LangVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Scryber.snk</AssemblyOriginatorKeyFile>
-    <PackageId>Scryber.Core</PackageId>
+    <PackageId>iPlus.Scryber.Core</PackageId>
     <PackageVersion>9.5.0.1</PackageVersion>
     <Authors>richard@paperworkday.com</Authors>
     <Copyright>Richard Hewitson 2026</Copyright>
@@ -193,7 +193,7 @@ This framework is built entirely in .NET supporting Blazor WASM and is released 
     <Version>9.5.0.1</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageIcon>PaperworkLogoTransparent.png</PackageIcon>
-    <RepositoryUrl>https://github.com/richard-scryber/scryber.core</RepositoryUrl>
+    <RepositoryUrl>https://github.com/iplus-framework/scryber.core</RepositoryUrl>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>9.5.0.1</FileVersion>
     <RepositoryType>Git</RepositoryType>
@@ -220,6 +220,9 @@ This framework is built entirely in .NET supporting Blazor WASM and is released 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0|AnyCPU'">
         <DebugType>portable</DebugType>
     </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0|AnyCPU'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Web\**" />
     <EmbeddedResource Remove="Web\**" />
