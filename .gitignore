@@ -401,6 +401,9 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder
 .mfractor/
 
+# VS-Code csharp devkit lscache
+*.lscache
+
 # Local History for Visual Studio
 .localhistory/.DS_Store
 Scryber.Core.sln.DotSettings.user
