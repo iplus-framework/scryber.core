@@ -1,6 +1,7 @@
 ﻿<Project>
   <PropertyGroup>
-    <UseIPlusBuildProps>false</UseIPlusBuildProps>
+    <UseIPlusBuildProps>True</UseIPlusBuildProps>
+    <UseScryberProjRef>True</UseScryberProjRef>
   </PropertyGroup>
 
   <!-- iPlus settings and overrides -->
