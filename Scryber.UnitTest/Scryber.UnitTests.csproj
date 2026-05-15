@@ -6,7 +6,7 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\Scryber.Core\Scryber.Configuration\Scryber.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Scryber.Configuration\Scryber.snk</AssemblyOriginatorKeyFile>
     <AssemblyName>Scryber.UnitTests</AssemblyName>
     <OutputType>Library</OutputType>
   </PropertyGroup>
