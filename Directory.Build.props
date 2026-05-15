@@ -1,0 +1,13 @@
+﻿<Project>
+  <PropertyGroup>
+    <UseIPlusBuildProps>false</UseIPlusBuildProps>
+  </PropertyGroup>
+
+  <!-- iPlus settings and overrides -->
+  <Import Condition="'$(UseIPlusBuildProps)' == 'True'" Project="..\iPlus\Directory.Build.props" />
+  <PropertyGroup Condition="'$(UseIPlusBuildProps)' == 'True'">
+    <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
+  </PropertyGroup>
+  <!-- End iPlus settings and overrides -->
+
+</Project>
