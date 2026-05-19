@@ -6,7 +6,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Scryber.snk</AssemblyOriginatorKeyFile>
     <PackageId>iPlus.Scryber.Core</PackageId>
-    <PackageVersion>9.5.0.1</PackageVersion>
+    <PackageVersion>9.5.0.2</PackageVersion>
     <Authors>richard@paperworkday.com</Authors>
     <Copyright>Richard Hewitson 2026</Copyright>
     <License>LICENSE.md</License>
@@ -14,7 +14,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>  
     <Owners>richard@scryber.co.uk</Owners>
     <PackageProjectUrl>https://github.com/richard-scryber/scryber.core</PackageProjectUrl>
-    <PackageReleaseNotes>9.5.0.1
+    <PackageReleaseNotes>9.5.0.2
 BREAKING RELEASE
 Removed support for Net Standard 2.0, and Image Sharp updated to 3.1.2
 All libraries updated to include dotnet 8/9/10
@@ -190,12 +190,12 @@ Easily create documents from your Apps, MVC sites, or Javascipt ajax calls.
 This framework is built entirely in .NET supporting Blazor WASM and is released under the LGPL licence so you can use to it in commercial applications.</Description>
     <PackOnBuild>false</PackOnBuild>
     <RootNamespace>Scryber</RootNamespace>
-    <Version>9.5.0.1</Version>
+    <Version>9.5.0.2</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageIcon>PaperworkLogoTransparent.png</PackageIcon>
     <RepositoryUrl>https://github.com/iplus-framework/scryber.core</RepositoryUrl>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>9.5.0.1</FileVersion>
+    <FileVersion>9.5.0.2</FileVersion>
     <RepositoryType>Git</RepositoryType>
     <Configurations>Release;Debug</Configurations>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
