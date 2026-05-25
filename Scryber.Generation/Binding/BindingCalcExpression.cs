@@ -34,9 +34,10 @@ namespace Scryber.Binding
         {
             // Data stack current item can change between evaluations (e.g. inside #each).
             // Always create a fresh provider for the current bind invocation.
-            this.ItemValueProvider = args.Context.Items.ValueProvider(
-                args.Context.CurrentIndex,
-                args.Context.DataStack.HasData ? args.Context.DataStack.Current : null, args.Context.DataStack);
+            if (null == this.ItemValueProvider)
+                this.ItemValueProvider = args.Context.Items.ValueProvider(
+                    args.Context.CurrentIndex,
+                    args.Context.DataStack.HasData ? args.Context.DataStack.Current : null, args.Context.DataStack);
 
             object value;
 
