@@ -228,7 +228,7 @@ This framework is built entirely in .NET supporting Blazor WASM and is released 
 
   <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
     <ItemGroup>
-      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.ReferenceSourceTarget)' == 'ProjectReference'" />
     </ItemGroup>
   </Target>
 </Project>

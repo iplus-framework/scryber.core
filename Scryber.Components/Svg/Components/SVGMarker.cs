@@ -10,7 +10,6 @@ using Scryber.PDF.Graphics;
 using Scryber.PDF.Native;
 using Scryber.PDF.Resources;
 using Scryber.Styles;
-using SixLabors.ImageSharp.ColorSpaces.Companding;
 
 namespace Scryber.Svg.Components;
 

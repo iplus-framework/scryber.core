@@ -18,8 +18,6 @@ namespace Scryber.Imaging.Formatted
 
         protected override long DoRenderImageData(IStreamFilter[] filters, ContextBase context, PDFWriter writer)
         {
-            var config = SixLabors.ImageSharp.Configuration.Default;
-            var ops = new Argb32().CreatePixelOperations();
             long total = 0;
 
             //New v2 ImageSharp accessor pattern
@@ -33,7 +31,14 @@ namespace Scryber.Imaging.Formatted
                 for (int r = 0; r < this.PixelHeight; r++)
                 {
                     var span = accessor.GetRowSpan(r);
-                    ops.ToRgb24Bytes(config, span, bufferSpan, width);
+                    for (int p = 0; p < width; p++)
+                    {
+                        int offset = p * 3;
+                        bufferSpan[offset] = span[p].R;
+                        bufferSpan[offset + 1] = span[p].G;
+                        bufferSpan[offset + 2] = span[p].B;
+                    }
+
                     writer.WriteRaw(buffer, 0, buffer.Length);
                     total += buffer.Length;
                 }

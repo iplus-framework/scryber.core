@@ -5,11 +5,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Scryber.Drawing;
 using Scryber.Imaging.Formatted;
-using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Tga;
 using SixLabors.ImageSharp.Formats.Tiff;
+using SixLabors.ImageSharp.Formats.Tiff.Constants;
 
 namespace Scryber.Imaging
 {
@@ -43,9 +43,8 @@ namespace Scryber.Imaging
             {
                 var name = document.GetIncrementID(ObjectTypes.ImageData) + ".tiff";
                 const ColorSpace colorSpace = ColorSpace.RGB;
-                int bitDepth = img.PixelType.BitsPerPixel; 
-                bool hasAlpha = img.PixelType.AlphaRepresentation.HasValue 
-                                && img.PixelType.AlphaRepresentation != PixelAlphaRepresentation.None;
+                int bitDepth = img.PixelType.BitsPerPixel;
+                bool hasAlpha = HasAlphaChannel(img);
                 
                 data = GetImageDataForImage(ImageFormat.Tiff, img, name, bitDepth, hasAlpha, colorSpace);
             }
@@ -67,8 +66,7 @@ namespace Scryber.Imaging
             {
                 ColorSpace colorSpace =  ColorSpace.RGB; 
                 int bitDepth = img.PixelType.BitsPerPixel;
-                bool hasAlpha = img.PixelType.AlphaRepresentation.HasValue 
-                                && img.PixelType.AlphaRepresentation != PixelAlphaRepresentation.None;
+                bool hasAlpha = HasAlphaChannel(img);
                 
                 data = GetImageDataForImage(ImageFormat.Tiff, img, path, bitDepth, hasAlpha, colorSpace);
             }
@@ -78,8 +76,33 @@ namespace Scryber.Imaging
             return data;
         }
 
+        private static bool HasAlphaChannel(Image image)
+        {
+            var metadata = image.Frames.RootFrame.Metadata.GetFormatMetadata(TiffFormat.Instance);
+            if (metadata == null)
+                return false;
 
+            int colorChannels;
+            switch (metadata.PhotometricInterpretation)
+            {
+                case TiffPhotometricInterpretation.Rgb:
+                case TiffPhotometricInterpretation.YCbCr:
+                case TiffPhotometricInterpretation.CieLab:
+                case TiffPhotometricInterpretation.IccLab:
+                case TiffPhotometricInterpretation.ItuLab:
+                    colorChannels = 3;
+                    break;
+                case TiffPhotometricInterpretation.Separated:
+                    colorChannels = 4;
+                    break;
+                default:
+                    colorChannels = 1;
+                    break;
+            }
 
+            return metadata.BitsPerSample is TiffBitsPerSample bitsPerSample
+                   && bitsPerSample.Channels > colorChannels;
+        }
 
     }
 }

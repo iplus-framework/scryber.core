@@ -62,8 +62,9 @@ namespace Scryber.Imaging
                         throw new IndexOutOfRangeException("The bit depth for the raw Png image was out of range : " + meta.BitDepth.ToString());
                 }
                 
-                var alpha = (meta.ColorType.HasValue && meta.ColorType.Value == PngColorType.RgbWithAlpha) 
-                            || (meta.ColorType.HasValue && meta.ColorType == PngColorType.GrayscaleWithAlpha);
+                var alpha = meta.ColorType is PngColorType colorType
+                            && (colorType == PngColorType.RgbWithAlpha
+                                || colorType == PngColorType.GrayscaleWithAlpha);
                 
                 var name = document.GetIncrementID(ObjectTypes.ImageData) + ".png";
                 
@@ -112,8 +113,9 @@ namespace Scryber.Imaging
                                                            " was out of range : " + meta.BitDepth.ToString());
                 }
                 
-                var alpha = (meta.ColorType.HasValue && meta.ColorType.Value == PngColorType.GrayscaleWithAlpha) 
-                            || (meta.ColorType.HasValue && meta.ColorType == PngColorType.RgbWithAlpha);
+                var alpha = meta.ColorType is PngColorType colorType
+                            && (colorType == PngColorType.GrayscaleWithAlpha
+                                || colorType == PngColorType.RgbWithAlpha);
                 
                 
                 data = CreatePngImageDataWithFallback(img, path, depth, alpha, colorSpace);
